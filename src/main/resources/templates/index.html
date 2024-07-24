@@ -13,23 +13,56 @@
 </head>
 
 <body>
-	<header class="navbar navbar-expand-lg bd-navbar sticky-top">
-		<nav class="container-xl bd-gutter flex-wrap">
-			<div class="offcanvas-body p-4 pt-0 p-lg-0">
-				<hr class="d-lg-none text-white-50">
-				<ul class="navbar-nav flex-row flex-wrap ms-md-auto">
-					<li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
-						<div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
-						<hr class="d-lg-none my-2 text-white-50">
-					</li>
-					<li>TBS v.1.0</li>
-					<li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
-						<div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
-						<hr class="d-lg-none my-2 text-white-50">
-					</li>
-				</ul>
+
+	<!-- User authentication card-->
+	<div class="card border-info col-md-2">
+
+		<div class="card-header bg-info text-center">User authentication</div>
+
+		<div class="card-body row">
+
+			<!-- Log In Button -->
+			<div class="col">
+				<a th:href="@{/showLoginForm}" class="btn btn-primary col-12"
+					role="button" aria-pressed="true">Log In</a>
 			</div>
-		</nav>
-	</header>
+
+			<!-- Sign Up Button -->
+			<div class="col">
+				<a th:href="@{/register/showRegistrationForm}"
+					class="btn btn-light col-12" role="button" aria-pressed="true">
+					Sign Up</a>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Search journeys-->
+	<div class="card border-primary col-md-2">
+
+		<div class="card-header bg-primary text-center">Search journey</div>
+
+		<div class="card-body row-2">
+
+			<!-- Departure station -->
+			<div class="col input-group mb-3">
+				<input type="search" name="departure"
+					placeholder="Departure station" class="form-control">
+			</div>
+
+			<!-- Destination station -->
+			<div class="col input-group mb-3">
+				<input type="search" name="departure"
+					placeholder="Destination station" class="form-control">
+			</div>
+
+			<!-- Search button -->
+			<div class="col">
+				<button type="submit" class="btn btn-success">Search</button>
+			</div>
+
+		</div>
+	</div>
+
 </body>
 </html>
