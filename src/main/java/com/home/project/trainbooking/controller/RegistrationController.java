@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class RegistrationController {
 	
-	private Logger logger = Logger.getLogger(getClass().getName());
+	private final Logger logger = Logger.getLogger(getClass().getName());
 
 	
 }

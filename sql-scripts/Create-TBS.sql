@@ -60,9 +60,11 @@ CREATE TABLE `journey_station` (
 	CONSTRAINT fk_js_station FOREIGN KEY (`station_id`) REFERENCES station (`id`));
 
 CREATE TABLE `journey_carriage` (
+	`id` INT NOT NULL AUTO_INCREMENT,
 	`journey_id` INT NOT NULL,
 	`carriage_class_id` INT NOT NULL,
 	`position` INT NOT NULL,
+	CONSTRAINT pk_journeycarriage PRIMARY KEY (`id`),
 	CONSTRAINT fk_jc_journey FOREIGN KEY (`journey_id`) REFERENCES journey (`id`),
 	CONSTRAINT fk_jc_carclass FOREIGN KEY (`carriage_class_id`) REFERENCES carriage_class (`id`));
 
