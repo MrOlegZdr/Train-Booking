@@ -1,7 +1,5 @@
 package com.home.project.trainbooking.entity;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -83,28 +81,12 @@ public class CarriageClass {
 		this.carriagePrices = carriagePrices;
 	}
 
-	public void addCarriagePrice(CarriagePrice carriagePrice) {
-		if (carriagePrices == null) {
-			carriagePrices = new HashSet<>();
-		}
-		carriagePrices.add(carriagePrice);
-		carriagePrice.setCarriageClass(this);
-	}
-
 	public List<JourneyCarriage> getJourneyCarriages() {
 		return journeyCarriages;
 	}
 
 	public void setJourneyCarriages(List<JourneyCarriage> journeyCarriages) {
 		this.journeyCarriages = journeyCarriages;
-	}
-
-	public void addJourneyCarriage(JourneyCarriage journeyCarriage) {
-		if (journeyCarriages == null) {
-			journeyCarriages = new ArrayList<>();
-		}
-		journeyCarriages.add(journeyCarriage);
-		journeyCarriage.setCarriageClass(this);
 	}
 
 	@Override

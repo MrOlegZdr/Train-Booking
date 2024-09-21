@@ -1,6 +1,5 @@
 package com.home.project.trainbooking.entity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -42,9 +41,8 @@ public class Journey {
 	public Journey() {
 	}
 
-	public Journey(String name, Schedule schedule) {
+	public Journey(String name) {
 		this.name = name;
-		this.schedule = schedule;
 	}
 
 	public Long getId() {
@@ -77,14 +75,6 @@ public class Journey {
 
 	public void setJourneyCarriages(List<JourneyCarriage> journeyCarriages) {
 		this.journeyCarriages = journeyCarriages;
-	}
-
-	public void addJourneyCarriage(JourneyCarriage journeyCarriage) {
-		if (journeyCarriages == null) {
-			journeyCarriages = new ArrayList<>();
-		}
-		journeyCarriages.add(journeyCarriage);
-		journeyCarriage.setJourney(this);
 	}
 
 	@Override

@@ -71,8 +71,7 @@ public class CarriagePrice {
 
 	@Override
 	public String toString() {
-		return "CarriagePrice [id=" + id + ", schedule=" + schedule + ", carriageClass=" + carriageClass + ", price="
-				+ price + "]";
+		return "CarriagePrice [id=" + id + ", price=" + price + "]";
 	}
 
 }
