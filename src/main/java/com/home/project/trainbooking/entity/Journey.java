@@ -1,6 +1,7 @@
 package com.home.project.trainbooking.entity;
 
 import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -37,6 +38,10 @@ public class Journey {
 	@OneToMany(mappedBy = "journey", fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.MERGE,
 			CascadeType.PERSIST, CascadeType.REFRESH })
 	private List<JourneyCarriage> journeyCarriages;
+
+	@OneToMany(mappedBy = "journey", fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.MERGE,
+			CascadeType.PERSIST, CascadeType.REFRESH })
+	private Set<JourneyStation> journeyStations;
 
 	public Journey() {
 	}
@@ -75,6 +80,14 @@ public class Journey {
 
 	public void setJourneyCarriages(List<JourneyCarriage> journeyCarriages) {
 		this.journeyCarriages = journeyCarriages;
+	}
+
+	public Set<JourneyStation> getJourneyStations() {
+		return journeyStations;
+	}
+
+	public void setJourneyStations(Set<JourneyStation> journeyStations) {
+		this.journeyStations = journeyStations;
 	}
 
 	@Override
