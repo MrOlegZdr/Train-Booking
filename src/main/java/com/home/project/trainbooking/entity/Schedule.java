@@ -12,7 +12,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -25,8 +24,7 @@ public class Schedule {
 	@Column(name = "id")
 	private Long id;
 
-	@NotBlank
-	@Column(name = "name")
+	@Column(name = "name", nullable = false)
 	private String name;
 
 	@OneToMany(mappedBy = "schedule", fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.MERGE,

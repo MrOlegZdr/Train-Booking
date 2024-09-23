@@ -12,7 +12,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -25,12 +24,10 @@ public class CarriageClass {
 	@Column(name = "id")
 	private Long id;
 
-	@NotBlank
-	@Column(name = "class_name")
+	@Column(name = "class_name", nullable = false)
 	private String className;
 
-	@NotBlank
-	@Column(name = "seating_capacity")
+	@Column(name = "seating_capacity", nullable = false)
 	private int seatingCapacity;
 
 	@OneToMany(mappedBy = "carriageClass", fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.MERGE,
@@ -40,6 +37,10 @@ public class CarriageClass {
 	@OneToMany(mappedBy = "carriageClass", fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.MERGE,
 			CascadeType.PERSIST, CascadeType.REFRESH })
 	private List<JourneyCarriage> journeyCarriages;
+
+	@OneToMany(mappedBy = "carriageClass", fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.MERGE,
+			CascadeType.PERSIST, CascadeType.REFRESH })
+	private List<Booking> bookings;
 
 	public CarriageClass() {
 	}
@@ -87,6 +88,14 @@ public class CarriageClass {
 
 	public void setJourneyCarriages(List<JourneyCarriage> journeyCarriages) {
 		this.journeyCarriages = journeyCarriages;
+	}
+
+	public List<Booking> getBookings() {
+		return bookings;
+	}
+
+	public void setBookings(List<Booking> bookings) {
+		this.bookings = bookings;
 	}
 
 	@Override

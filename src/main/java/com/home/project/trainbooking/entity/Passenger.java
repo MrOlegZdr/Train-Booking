@@ -1,13 +1,17 @@
 package com.home.project.trainbooking.entity;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -20,22 +24,22 @@ public class Passenger {
 	@Column(name = "id")
 	private Long id;
 
-	@NotBlank
-	@Column(name = "first_name")
+	@Column(name = "first_name", nullable = false)
 	private String firstName;
 
-	@NotBlank
-	@Column(name = "last_name")
+	@Column(name = "last_name", nullable = false)
 	private String lastName;
 
 	@Email
-	@NotBlank
-	@Column(name = "email")
+	@Column(name = "email", nullable = false)
 	private String email;
 
-	@NotBlank
-	@Column(name = "password")
+	@Column(name = "password", nullable = false)
 	private String password;
+
+	@OneToMany(mappedBy = "passenger", fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.MERGE,
+			CascadeType.PERSIST, CascadeType.REFRESH })
+	private List<Booking> bookings;
 
 	public Passenger() {
 	}
@@ -87,10 +91,17 @@ public class Passenger {
 		this.password = password;
 	}
 
+	public List<Booking> getBookings() {
+		return bookings;
+	}
+
+	public void setBookings(List<Booking> bookings) {
+		this.bookings = bookings;
+	}
+
 	@Override
 	public String toString() {
-		return "Passenger [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", password=" + password + "]";
+		return "Passenger [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
 	}
 
 }

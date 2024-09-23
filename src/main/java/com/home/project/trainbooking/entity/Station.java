@@ -11,7 +11,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -24,13 +23,20 @@ public class Station {
 	@Column(name = "id")
 	private Long id;
 
-	@NotBlank
-	@Column(name = "station_name")
+	@Column(name = "station_name", nullable = false)
 	private String stationName;
 
 	@OneToMany(mappedBy = "station", fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.MERGE,
 			CascadeType.PERSIST, CascadeType.REFRESH })
 	private Set<JourneyStation> journeyStations;
+
+	@OneToMany(mappedBy = "departureStation", fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.MERGE,
+			CascadeType.PERSIST, CascadeType.REFRESH })
+	private Set<Booking> departures;
+
+	@OneToMany(mappedBy = "arrivalStation", fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.MERGE,
+			CascadeType.PERSIST, CascadeType.REFRESH })
+	private Set<Booking> arrivals;
 
 	public Station() {
 	}
@@ -53,6 +59,30 @@ public class Station {
 
 	public void setStationName(String stationName) {
 		this.stationName = stationName;
+	}
+
+	public Set<JourneyStation> getJourneyStations() {
+		return journeyStations;
+	}
+
+	public void setJourneyStations(Set<JourneyStation> journeyStations) {
+		this.journeyStations = journeyStations;
+	}
+
+	public Set<Booking> getDepartures() {
+		return departures;
+	}
+
+	public void setDepartures(Set<Booking> departures) {
+		this.departures = departures;
+	}
+
+	public Set<Booking> getArrivals() {
+		return arrivals;
+	}
+
+	public void setArrivals(Set<Booking> arrivals) {
+		this.arrivals = arrivals;
 	}
 
 	@Override

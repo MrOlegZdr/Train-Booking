@@ -25,7 +25,7 @@ public class CarriagePrice {
 	@JoinColumn(name = "carriage_class_id")
 	private CarriageClass carriageClass;
 
-	@Column(name = "price")
+	@Column(name = "price", nullable = false)
 	private int price;
 
 	public CarriagePrice() {

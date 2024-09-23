@@ -8,8 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 public class JourneyStation {
@@ -27,16 +27,15 @@ public class JourneyStation {
 	@JoinColumn(name = "station_id")
 	private Station station;
 
-	@NotBlank
-	@Column(name = "stop_order")
+	@Column(name = "stop_order", nullable = false)
 	private int stopOrder;
 
-	@NotNull
-	@Column(name = "departure_time")
+	@Column(name = "departure_time", nullable = false)
+	@Temporal(TemporalType.TIME)
 	private Date departureTime;
 
-	@NotNull
-	@Column(name = "arrival_time")
+	@Column(name = "arrival_time", nullable = false)
+	@Temporal(TemporalType.TIME)
 	private Date arrivalTime;
 
 	public JourneyStation() {

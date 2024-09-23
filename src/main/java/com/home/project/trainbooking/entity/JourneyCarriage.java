@@ -32,14 +32,13 @@ public class JourneyCarriage {
 	@JoinColumn(name = "carriage_class_id")
 	private CarriageClass carriageClass;
 
-	@NotNull
-	@Column(name = "position")
+	@Column(name = "position", nullable = false)
 	private int position;
 
 	public JourneyCarriage() {
 	}
 
-	public JourneyCarriage(Journey journey, CarriageClass carriageClass, @NotNull int position) {
+	public JourneyCarriage(Journey journey, CarriageClass carriageClass, int position) {
 		this.journey = journey;
 		this.carriageClass = carriageClass;
 		this.position = position;
