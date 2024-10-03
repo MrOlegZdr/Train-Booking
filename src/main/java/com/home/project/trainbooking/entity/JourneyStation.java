@@ -30,11 +30,11 @@ public class JourneyStation {
 	@Column(name = "stop_order", nullable = false)
 	private int stopOrder;
 
-	@Column(name = "departure_time", nullable = false)
+	@Column(name = "departure_time")
 	@Temporal(TemporalType.TIME)
 	private Date departureTime;
 
-	@Column(name = "arrival_time", nullable = false)
+	@Column(name = "arrival_time")
 	@Temporal(TemporalType.TIME)
 	private Date arrivalTime;
 

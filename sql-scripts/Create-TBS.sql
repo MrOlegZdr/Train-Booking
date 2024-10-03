@@ -22,7 +22,7 @@ CREATE TABLE `passenger` (
 	`email` VARCHAR(100) NOT NULL,
 	`password` CHAR(68) NOT NULL,
 	CONSTRAINT pk_passenger PRIMARY KEY (`id`));
-	
+
 CREATE TABLE `station` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`station_name` VARCHAR(200) NOT NULL,
@@ -55,8 +55,8 @@ CREATE TABLE `journey_station` (
 	`journey_id` INT NOT NULL,
 	`station_id` INT NOT NULL,
 	`stop_order` INT NOT NULL,
-	`departure_time` DATETIME NOT NULL,
-	`arrival_time` DATETIME NOT NULL,
+	`departure_time` DATETIME,
+	`arrival_time` DATETIME,
 	CONSTRAINT fk_js_journey FOREIGN KEY (`journey_id`) REFERENCES journey (`id`),
 	CONSTRAINT fk_js_station FOREIGN KEY (`station_id`) REFERENCES station (`id`));
 
@@ -78,16 +78,16 @@ CREATE TABLE `carriage_price` (
 
 CREATE TABLE `booking` (
 	`id` INT NOT NULL AUTO_INCREMENT,
-	`passenger_id` INT NOT NULL,
-	`booking_status_id` INT NOT NULL,
-	`booking_date` DATE NOT NULL,
-	`departure_station_id` INT NOT NULL,
-	`arrival_station_id` INT NOT NULL,
-	`journey_id` INT NOT NULL,
-	`carriage_class_id` INT NOT NULL,
+	`passenger_id` INT,
+	`booking_status_id` INT,
+	`booking_date` DATE,
+	`departure_station_id` INT,
+	`arrival_station_id` INT,
+	`journey_id` INT,
+	`carriage_class_id` INT,
 	`amount_paid` INT,
-	`ticket_no` INT NOT NULL,
-	`seat_no` VARCHAR(10) NOT NULL,
+	`ticket_no` INT,
+	`seat_no` VARCHAR(10),
 	CONSTRAINT pk_booking PRIMARY KEY (`id`),
 	CONSTRAINT fk_booking_passenger FOREIGN KEY (`passenger_id`) REFERENCES passenger (`id`),
 	CONSTRAINT fk_booking_status FOREIGN KEY (`booking_status_id`) REFERENCES booking_status (`id`),

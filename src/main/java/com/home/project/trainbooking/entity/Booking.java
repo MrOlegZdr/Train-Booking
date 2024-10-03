@@ -26,16 +26,16 @@ public class Booking {
 	private Long id;
 
 	@Column(name = "booking_date")
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date bookingDate;
 
 	@Column(name = "amount_paid")
 	private int amountPaid;
 
-	@Column(name = "ticket_no", nullable = false)
+	@Column(name = "ticket_no")
 	private int ticketNo;
 
-	@Column(name = "seat_no", nullable = false)
+	@Column(name = "seat_no")
 	private String seatNo;
 
 	@ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
