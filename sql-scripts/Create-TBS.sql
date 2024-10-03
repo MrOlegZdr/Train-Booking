@@ -55,8 +55,8 @@ CREATE TABLE `journey_station` (
 	`journey_id` INT NOT NULL,
 	`station_id` INT NOT NULL,
 	`stop_order` INT NOT NULL,
-	`departure_time` DATETIME,
-	`arrival_time` DATETIME,
+	`departure_time` TIME,
+	`arrival_time` TIME,
 	CONSTRAINT fk_js_journey FOREIGN KEY (`journey_id`) REFERENCES journey (`id`),
 	CONSTRAINT fk_js_station FOREIGN KEY (`station_id`) REFERENCES station (`id`));
 
