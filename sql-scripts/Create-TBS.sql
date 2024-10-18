@@ -19,13 +19,13 @@ CREATE TABLE `passenger` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`first_name` VARCHAR(100) NOT NULL,
 	`last_name` VARCHAR(100) NOT NULL,
-	`email` VARCHAR(100) NOT NULL,
+	`email` VARCHAR(100) UNIQUE NOT NULL,
 	`password` CHAR(68) NOT NULL,
 	CONSTRAINT pk_passenger PRIMARY KEY (`id`));
 
 CREATE TABLE `station` (
 	`id` INT NOT NULL AUTO_INCREMENT,
-	`station_name` VARCHAR(200) NOT NULL,
+	`station_name` VARCHAR(200) UNIQUE NOT NULL,
 	CONSTRAINT pk_station PRIMARY KEY (`id`));
 
 CREATE TABLE `booking_status` (
@@ -35,7 +35,7 @@ CREATE TABLE `booking_status` (
 
 CREATE TABLE `schedule` (
 	`id` INT NOT NULL AUTO_INCREMENT,
-	`name` VARCHAR(200) NOT NULL,
+	`name` VARCHAR(200) UNIQUE NOT NULL,
 	CONSTRAINT pk_schedule PRIMARY KEY (`id`));
 
 CREATE TABLE `carriage_class` (
